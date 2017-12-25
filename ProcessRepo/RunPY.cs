@@ -5,6 +5,10 @@ namespace MangementSys.ProcessRepo
 {
     public class RunPY
     {
+        //Call like this:
+        //var res = new RunPY().Run($"{Directory.GetCurrentDirectory()}/run.py","");
+        //Console.WriteLine(res);
+
         public string Run(string cmd, string args)
         {
         ProcessStartInfo start = new ProcessStartInfo();
