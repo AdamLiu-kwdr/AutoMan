@@ -18,31 +18,28 @@ namespace MangementSys.Controllers
             return Ok();
         }
 
-        // GET Diagno/TestMotor/interval(Micro Seconds), test motor on port MA. (big motor only.)
+        // GET Diagno/TestMotor/interval(Micro Seconds, default 1000), test motor on port MA. (big motor only.)
         [HttpGet]
-        public string TestMotor(int interval)
+        public string TestMotor(int interval = 1000)
         {
-            throw new Exception("Unfinished function");
-            //var res = new RunPY().Run($"{Directory.GetCurrentDirectory()}/run.py","");
-            //return res;
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestMotor.py",$"{interval}");
+            return result;
         }
 
         // GET Diagno/TestUC, Test ultra sonic. Will send back UC value.
         [HttpGet]
         public string TestUS()
         {
-            throw new Exception("Unfinished function");
-            //var res = new RunPY().Run($"{Directory.GetCurrentDirectory()}/run.py","");
-            //return res;
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestUC.py","");
+            return result;
         }
 
         // GET Diagno/TestCS, Test color sensor. Will send back CS value.
         [HttpGet]
         public string TestCS()
         {
-            throw new Exception("Unfinished function");
-            //var res = new RunPY().Run($"{Directory.GetCurrentDirectory()}/run.py","");
-            //return res;
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestCS.py","");
+            return result;
         }
 
     }
