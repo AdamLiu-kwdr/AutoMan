@@ -20,9 +20,9 @@ namespace MangementSys.Controllers
 
         // GET Diagno/TestMotor/interval(Micro Seconds, default 1000), test motor on port MA. (big motor only.)
         [HttpGet]
-        public string TestMotor(int interval = 1000)
+        public string TestMotor(int Interval = 1000)
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestMotor.py",$"{interval}");
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestMotor.py",$"{Interval}");
             return result;
         }
 
