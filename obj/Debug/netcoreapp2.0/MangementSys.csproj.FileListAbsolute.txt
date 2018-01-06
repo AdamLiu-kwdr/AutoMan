@@ -8,3 +8,13 @@ C:\Users\jtljt\Desktop\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.Assembl
 C:\Users\jtljt\Desktop\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.AssemblyInfo.cs
 C:\Users\jtljt\Desktop\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.dll
 C:\Users\jtljt\Desktop\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.pdb
+C:\Users\jtljt\OneDrive\程式\MangementSys\bin\Debug\netcoreapp2.0\MangementSys.deps.json
+C:\Users\jtljt\OneDrive\程式\MangementSys\bin\Debug\netcoreapp2.0\MangementSys.runtimeconfig.json
+C:\Users\jtljt\OneDrive\程式\MangementSys\bin\Debug\netcoreapp2.0\MangementSys.runtimeconfig.dev.json
+C:\Users\jtljt\OneDrive\程式\MangementSys\bin\Debug\netcoreapp2.0\MangementSys.dll
+C:\Users\jtljt\OneDrive\程式\MangementSys\bin\Debug\netcoreapp2.0\MangementSys.pdb
+C:\Users\jtljt\OneDrive\程式\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.csproj.CoreCompileInputs.cache
+C:\Users\jtljt\OneDrive\程式\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.AssemblyInfoInputs.cache
+C:\Users\jtljt\OneDrive\程式\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.AssemblyInfo.cs
+C:\Users\jtljt\OneDrive\程式\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.dll
+C:\Users\jtljt\OneDrive\程式\MangementSys\obj\Debug\netcoreapp2.0\MangementSys.pdb

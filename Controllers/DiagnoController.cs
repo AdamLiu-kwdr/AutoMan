@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MangementSys.ProcessRepo;
 using System.IO;
+using MangementSys.LEGOInterface;
 
 namespace MangementSys.Controllers
 {
     // localhost:5000/Diagno
     public class DiagnoController : Controller
     {
+        LegoRobotPS Robot = new LegoRobotPS();
+
         //GET Service Up, Checking service status.
         [HttpGet]
         public IActionResult CheckService()
@@ -18,29 +21,21 @@ namespace MangementSys.Controllers
             return Ok();
         }
 
-        // GET Diagno/TestMotor/interval(Micro Seconds, default 1000), test motor on port MA. (big motor only.)
+        // GET Diagno/TestMotor?interval=1000 (Micro Seconds, default 1000), test motor on port MA. (big motor only.)
         [HttpGet]
-        public string TestMotor(int Interval = 1000)
+        public string TestMotors(int Interval = 1000)
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestMotor.py",$"{Interval}");
-            return result;
+            var BeltResult = Robot.ConveyorMove(true,100);
+            var LoaderResult = Robot.BallLoaderNext(1);
+            return (BeltResult+LoaderResult);
         }
 
-        // GET Diagno/TestUC, Test ultra sonic. Will send back UC value.
+        // GET Diagno/TestCS, Test Object sensor(ColorSensor). Will return if object detacted.
         [HttpGet]
-        public string TestUS()
+        public string TestOBJsensor()
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestUC.py","");
-            return result;
+            var result = Robot.PackageSensor();
+            return $"ObjectSensor result: {result}";
         }
-
-        // GET Diagno/TestCS, Test color sensor. Will send back CS value.
-        [HttpGet]
-        public string TestCS()
-        {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/TestCS.py","");
-            return result;
-        }
-
     }
 }
