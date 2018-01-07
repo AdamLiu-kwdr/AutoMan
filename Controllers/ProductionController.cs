@@ -16,6 +16,10 @@ namespace MangementSys.Controllers
         [HttpPost]
         public IActionResult ProduceSingle()
         {
+          Robot.MovetoSensor(true);
+          Robot.ConveyorMove(false,400);
+          Robot.BallLoaderNext(1);
+          Robot.ConveyorMove(true,5000);
           //TODO: Implement Realistic Implementation
           return Ok();
         }

@@ -25,7 +25,7 @@ namespace MangementSys.Controllers
         [HttpGet]
         public string TestMotors(int Interval = 1000)
         {
-            var BeltResult = Robot.ConveyorMove(true,100);
+            var BeltResult = Robot.ConveyorMove(true,Interval);
             var LoaderResult = Robot.BallLoaderNext(1);
             return (BeltResult+LoaderResult);
         }
