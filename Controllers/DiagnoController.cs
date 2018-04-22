@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MangementSys.ProcessRepo;
+using AutoManSys.ProcessRepo;
 using System.IO;
-using MangementSys.LEGOInterface;
+using AutoManSys.LEGOInterface;
 
-namespace MangementSys.Controllers
+namespace AutoManSys.Controllers
 {
     //This controller is for Diagnosting Motors/Sensors and the service its self.
     // localhost:5000/Diagno

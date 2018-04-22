@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace MangementSys.ProcessRepo
+namespace AutoManSys.ProcessRepo
 {
     /*
     This class is For starting a new thread for Python runtime.

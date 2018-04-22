@@ -1,4 +1,4 @@
-namespace MangementSys.LEGOInterface
+namespace AutoManSys.LEGOInterface
 {
 /*
 This Interface is for standarlizing the method names/signatures throughout the system.

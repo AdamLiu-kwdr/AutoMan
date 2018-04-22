@@ -1,8 +1,8 @@
 using System;
 using System.IO;
-using MangementSys.ProcessRepo;
+using AutoManSys.ProcessRepo;
 
-namespace MangementSys.LEGOInterface
+namespace AutoManSys.LEGOInterface
 {
     /*
     This Interface controls LEGO by running python through RunPY.
