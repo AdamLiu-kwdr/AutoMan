@@ -1,5 +1,10 @@
 namespace MangementSys.LEGOInterface
 {
+/*
+This Interface is for standarlizing the method names/signatures throughout the system.
+So it's will be easier add in new BrickPI. 
+(Different ID for different BrickPI for the class should be added in the future.)
+*/
     public interface ILEGORobot
     {
         //All control methods must return result printed by python.

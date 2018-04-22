@@ -3,6 +3,11 @@ using System.IO;
 
 namespace MangementSys.ProcessRepo
 {
+    /*
+    This class is For starting a new thread for Python runtime.
+    So the python API driver iis actually called from here.
+    All the pre written Python program are storeed in RunPy.
+    */
     public class RunPY
     {
         //Call like this:

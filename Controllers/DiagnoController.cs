@@ -9,6 +9,7 @@ using MangementSys.LEGOInterface;
 
 namespace MangementSys.Controllers
 {
+    //This controller is for Diagnosting Motors/Sensors and the service its self.
     // localhost:5000/Diagno
     public class DiagnoController : Controller
     {
