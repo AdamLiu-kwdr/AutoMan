@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AutoManSys.ProcessRepo;
+using AutoManSys.PYRepo;
 using System.IO;
 using AutoManSys.LEGOInterface;
 
@@ -13,7 +13,7 @@ namespace AutoManSys.Controllers
     // localhost:5000/Diagno
     public class DiagnoController : Controller
     {
-        LegoRobotPS Robot = new LegoRobotPS();
+        private readonly ILEGORobot Robot = new LegoRobotPY();
 
         //GET Service Up, Checking service status.
         [HttpGet]

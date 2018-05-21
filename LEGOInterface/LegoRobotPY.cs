@@ -1,16 +1,18 @@
 using System;
 using System.IO;
-using AutoManSys.ProcessRepo;
+using AutoManSys.PYRepo;
 
 namespace AutoManSys.LEGOInterface
 {
     /*
-    This Interface controls LEGO by running python through RunPY.
+    This class is the ILEGORobot's PYthon implement.
+    will control LEGO through PYrepo's RunPY class.
     SensorStart.py => Initial Sensors
     BeltControl.py => Control Convey Belt
     BallLoaderControl.py => Control Ball Loader
+    (PS means Python Scripts)
     */
-    public class LegoRobotPS : ILEGORobot
+    public class LegoRobotPY : ILEGORobot
     {
 
        /*  Reserve for future use.

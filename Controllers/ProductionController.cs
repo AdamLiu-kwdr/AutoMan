@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AutoManSys.ProcessRepo;
+using AutoManSys.PYRepo;
 using System.IO;
 using AutoManSys.LEGOInterface;
 
@@ -13,7 +13,7 @@ namespace AutoManSys.Controllers
     //Before The analyze engine is functional, this pre written instructions can be called to let the production line work.
     public class ProductionController : Controller
     {
-        LegoRobotPS Robot = new LegoRobotPS();
+        private readonly ILEGORobot Robot = new LegoRobotPY();
 
         [HttpPost]
         public IActionResult ProduceSingle() //Do one production cycle
