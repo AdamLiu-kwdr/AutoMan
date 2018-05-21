@@ -1,3 +1,5 @@
+#This program controls the conveyor belt
+
 import ev3dev.brickpi as ev3 #Import ev3
 import sys # import sys library for arguments function
 

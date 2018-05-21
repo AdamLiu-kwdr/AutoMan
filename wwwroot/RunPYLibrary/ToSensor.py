@@ -1,3 +1,7 @@
+#This python script will move Object to the sensor
+#by turning conveyor belt until sensor dectes object.
+#(conveyor direction is passed in as a parameter.)
+
 import ev3dev.brickpi as ev3
 from time import sleep
 

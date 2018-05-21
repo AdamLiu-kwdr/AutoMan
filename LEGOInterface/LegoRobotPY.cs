@@ -23,7 +23,7 @@ namespace AutoManSys.LEGOInterface
 
         public string InitialSensors() //Set Sensor on ports.
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/SensorStart.py",null);
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/SensorStart.py",null);
             return result;
         }
 
@@ -38,12 +38,12 @@ namespace AutoManSys.LEGOInterface
                 case true:
                     break;
             }
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/BeltControl.py",$"{Interval}\" \"{speed}");
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/BeltControl.py",$"{Interval}\" \"{speed}");
             return result;
         }
         public string BallLoaderNext(int number = 1) //Activate Ball Loader, drop new ball
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/BallLoaderControl.py",$"{number}");
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/BallLoaderControl.py",$"{number}");
             return result;
         }
         public string MovetoSensor(bool GoForward = true) //Move the Package to sensor.
@@ -57,13 +57,13 @@ namespace AutoManSys.LEGOInterface
                 case true:
                     break;
             }
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/ToSensor.py",$"{speed}");
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/ToSensor.py",$"{speed}");
             return result;
         }
 
         public bool PackageSensor() //For reading if Color sensor has box in front of it
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/OBJSensor.py",null);
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/OBJSensor.py",null);
             bool reading = false;
             if(int.Parse(result) == 2){
                 reading = true;
