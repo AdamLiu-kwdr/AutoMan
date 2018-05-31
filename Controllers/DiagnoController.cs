@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AutoManSys.PYRepo;
 using System.IO;
 using AutoManSys.LEGOInterface;
 
@@ -17,9 +16,10 @@ namespace AutoManSys.Controllers
 
         //GET Service Up, Checking service status.
         [HttpGet]
-        public IActionResult CheckService()
+        public string CheckService()
         {
-            return Ok();
+            var result = Robot.InitialSensors();
+            return (result);
         }
 
         // GET Diagno/TestMotor?interval=1000 (Micro Seconds, default 1000), test motor on port MA. (big motor only.)

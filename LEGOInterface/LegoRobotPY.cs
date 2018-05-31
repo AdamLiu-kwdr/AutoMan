@@ -1,12 +1,12 @@
 using System;
 using System.IO;
-using AutoManSys.PYRepo;
+using AutoManSys.LEGOInterface;
 
 namespace AutoManSys.LEGOInterface
 {
     /*
     This class is the ILEGORobot's PYthon implement.
-    will control LEGO through PYrepo's RunPY class.
+    will control LEGO through RunPY class.
     SensorStart.py => Initial Sensors
     BeltControl.py => Control Convey Belt
     BallLoaderControl.py => Control Ball Loader
@@ -23,7 +23,7 @@ namespace AutoManSys.LEGOInterface
 
         public string InitialSensors() //Set Sensor on ports.
         {
-            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/SensorStart.py",null);
+            var result = new RunPY().Run($"{Directory.GetCurrentDirectory()}/wwwroot/RunPYLibrary/Init.py",null);
             return result;
         }
 

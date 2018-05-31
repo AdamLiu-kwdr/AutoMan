@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace AutoManSys.PYRepo
+namespace AutoManSys.LEGOInterface
 {
     /*
     This class is For starting a new thread for Python runtime.

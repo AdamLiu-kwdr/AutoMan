@@ -6,15 +6,14 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AutoManSys.Model;
-using AutoManSys.PYRepo;
-using AutoManSys.TaskRunner;
+using AutoManSys.Modules;
 using AutoManSys.LEGOInterface;
 
 namespace AutoManSys.Controllers
 {
     //This controller is the actual controller to accept instruction sets from OrdermanSys
     //Should actions done in async way?
-    public class TaskRunnerController : Controller
+    public class InstructionRunnerController : Controller
     {
         //Checking if service's ready.
         [HttpGet]
@@ -26,9 +25,10 @@ namespace AutoManSys.Controllers
         [HttpPost]
         public IActionResult Execute([FromBody]IEnumerable<Instruction> Insts)
         {
-            TaskRunnerEngine TrunnerEngine = new TaskRunnerEngine(Insts.ToList());
-            Thread RunnerThread = new Thread(TrunnerEngine.Run);
-            RunnerThread.Start();
+            InstructionRunner Trunner = new InstructionRunner(Insts.ToList());
+            // Thread RunnerThread = new Thread(TrunnerEngine.Run);
+            // RunnerThread.Start();
+            Task.Factory.StartNew(Trunner.Run).ConfigureAwait(false);
             return StatusCode(202);
         }
     }

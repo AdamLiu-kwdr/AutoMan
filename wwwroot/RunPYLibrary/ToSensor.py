@@ -13,7 +13,7 @@ sleep(1)
 
 m.run_timed(time_sp=5000, speed_sp=150)
 while (Co.value() != 2):
-    print(Co.value())
+    #print(Co.value())
     sleep(0.2)
 m.stop()
 print("Co detected")

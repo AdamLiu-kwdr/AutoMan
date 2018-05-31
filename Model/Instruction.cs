@@ -2,7 +2,7 @@ using System;
 
 namespace AutoManSys.Model
 {
-    //This model class is for Instructions in the AutoManSys's Taskrunner and  
+    //This model class is for Instructions in the AutoManSys's InstructionRunner and  
     //OrderManSys's Analyze engine. contains running instructions for lego motors.
 
     //Version 0.1
