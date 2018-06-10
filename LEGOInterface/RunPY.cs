@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
+using System;
 
 namespace AutoManSys.LEGOInterface
 {
@@ -25,11 +27,23 @@ namespace AutoManSys.LEGOInterface
         start.RedirectStandardError = true; // Any error in standard output will be redirected back (for example exceptions)
         using (Process process = Process.Start(start))
         {
+            //Waiting for the python program to finish
+            while (!process.HasExited)
+            {
+                Task.Delay(25);
+            }
+            if (process.ExitCode == 0)
+            {
             using (StreamReader reader = process.StandardOutput)
             {
                 string stderr = process.StandardError.ReadToEnd(); // Here are the exceptions from our Python script
                 string result = reader.ReadToEnd(); // Here is the result of StdOut(for example: print "test")
                 return result;
+            }
+            }
+            else
+            {
+                throw new ApplicationException($"process failed for {cmd}, exitcode not 0");
             }
         }
     }
