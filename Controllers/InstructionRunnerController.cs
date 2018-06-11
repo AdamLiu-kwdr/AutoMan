@@ -29,10 +29,11 @@ namespace AutoManSys.Controllers
             return Ok();
         }
 
+        //The function to activate AutoManSys' production line.
         [HttpPost]
-        public IActionResult Execute([FromBody]IEnumerable<Instruction> Insts)
+        public IActionResult Execute([FromBody]IEnumerable<Instruction> Insts,[FromQuery(Name = "Contiune")]bool Contiune = false)
         {
-            InstructionRunner Trunner = new InstructionRunner(Insts.ToList(),_connectionstrings);
+            InstructionRunner Trunner = new InstructionRunner(Insts.ToList(),_connectionstrings,Contiune);
             // Thread RunnerThread = new Thread(TrunnerEngine.Run);
             // RunnerThread.Start();
             Task.Factory.StartNew(Trunner.Run).ConfigureAwait(false);

@@ -15,16 +15,21 @@ namespace AutoManSys.Modules
     public class InstructionRunner
     {
         //Creating internal varaibles
+        private bool _contiuneRunningMode;
         private Communication comm;
         private readonly ILEGORobot robot = new LegoRobotPY();
         private int ErrorCount = 0; //For counting failed operation encountered. 
         private readonly IList<Instruction> InstructionSet; //Instructions to excute.
 
         //Counstructer
-        public InstructionRunner(IList<Instruction> instructionset,ConnectionStringOption ConnectionStrings)
+        //instructionset: Instructions to run
+        //ConnectionStringOption: the ConnectionStringOption object contains OrderManSys' address.
+        //ContiuneRunningMode: If production is in Contiune running mode.
+        public InstructionRunner(IList<Instruction> instructionset,ConnectionStringOption ConnectionStrings,bool ContiuneRunningMode)
         {
             InstructionSet = instructionset;
             comm = new Communication(ConnectionStrings.OrderManSys);
+            _contiuneRunningMode = ContiuneRunningMode;
         }
 
         //The actual running function. The large pile of switch cases waiting for better soulution.
@@ -157,7 +162,7 @@ namespace AutoManSys.Modules
                 }
             );
 
-            var ReportResultTask = comm.SendAsync("Communication", "ResultReport", $"?Success=True&Contiune=False");
+            var ReportResultTask = comm.SendAsync("Communication", "ResultReport", $"?Success=True&Contiune={_contiuneRunningMode}");
 
             Task.WaitAll(new Task[] { ReportLogTask, ReportResultTask });
 
