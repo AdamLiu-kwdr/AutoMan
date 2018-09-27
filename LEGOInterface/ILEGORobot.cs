@@ -1,4 +1,4 @@
-namespace AutoManSys.LEGOInterface
+namespace AutoManSys.LEGOInterface //LEGOInterface provide Ssystem to access Legos
 {
 /*
 This Interface is for standarlizing the method names/signatures throughout the system.

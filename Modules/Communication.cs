@@ -12,8 +12,8 @@ namespace AutoManSys.Modules
 {
     public class Communication
     {
-        
-        HttpClient client = new HttpClient();
+
+        HttpClient client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = true });
         HttpResponseMessage response = new HttpResponseMessage();
         private readonly string _orderManSysAddress;
         public Communication(string OrderManSysAddress)

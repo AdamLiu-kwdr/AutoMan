@@ -33,10 +33,10 @@ namespace AutoManSys.Controllers
         [HttpPost]
         public IActionResult Execute([FromBody]IEnumerable<Instruction> Insts,[FromQuery(Name = "Contiune")]bool Contiune = false)
         {
-            InstructionRunner Trunner = new InstructionRunner(Insts.ToList(),_connectionstrings,Contiune);
+            InstructionRunner Irunner = new InstructionRunner(Insts.ToList(),_connectionstrings,Contiune);
             // Thread RunnerThread = new Thread(TrunnerEngine.Run);
             // RunnerThread.Start();
-            Task.Factory.StartNew(Trunner.Run).ConfigureAwait(false);
+            Task.Factory.StartNew(Irunner.Run).ConfigureAwait(false);
             return StatusCode(202);
         }
     }

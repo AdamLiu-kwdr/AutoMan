@@ -2,6 +2,7 @@
 
 import ev3dev.brickpi as ev3 #Import ev3
 import sys # import sys library for arguments function
+from time import sleep
 
 #ARGS: BeltControl.py {Intervel} {Speed}
 
@@ -12,3 +13,5 @@ if sys.argv[1] == 0:
 print("Motor Running. Runs on speed %(speed)s for: %(time)s microSeconds" %{'speed':sys.argv[2],'time':sys.argv[1]})
 
 m.run_timed(time_sp=sys.argv[1], speed_sp=sys.argv[2])
+
+sleep(int(sys.argv[1])/1000)

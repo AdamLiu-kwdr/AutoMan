@@ -127,7 +127,7 @@ namespace AutoManSys.Modules
                 catch (Exception e)
                 {
                     //Throw Exception if error count reach 3 times.
-                    if (ErrorCount == 3)
+                    if (ErrorCount == 1)
                     {
                         //Write Log to OrderManSys, wait for the request to complete
                         Task.WaitAll(comm.PostAsync("Communication", "LogReport",

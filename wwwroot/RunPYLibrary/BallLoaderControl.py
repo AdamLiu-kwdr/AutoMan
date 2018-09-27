@@ -14,5 +14,5 @@ if int(sys.argv[1]) <= 0:
 print("BallLoader Running. Unload %(times)s Balls" %{'times':sys.argv[1]})
 
 for x in range(0,int(sys.argv[1])):
-    m.run_to_rel_pos(position_sp=-90, speed_sp=700)
-    sleep(0.8)
+    m.run_to_rel_pos(position_sp=355, speed_sp=450)
+    sleep(1.2)
