@@ -20,16 +20,19 @@ namespace AutoManSys.Modules
         private readonly ILEGORobot robot = new LegoRobotPY();
         private int ErrorCount = 0; //For counting failed operation encountered. 
         private readonly IList<Instruction> InstructionSet; //Instructions to excute.
+        string LockID="";
 
         //Counstructer
         //instructionset: Instructions to run
         //ConnectionStringOption: the ConnectionStringOption object contains OrderManSys' address.
         //ContiuneRunningMode: If production is in Contiune running mode.
-        public InstructionRunner(IList<Instruction> instructionset,ConnectionStringOption ConnectionStrings,bool ContiuneRunningMode)
+        //LockID: The id used to lock the LegoLock
+        public InstructionRunner(IList<Instruction> instructionset,ConnectionStringOption ConnectionStrings,bool ContiuneRunningMode,string lockID)
         {
             InstructionSet = instructionset;
             comm = new Communication(ConnectionStrings.OrderManSys);
             _contiuneRunningMode = ContiuneRunningMode;
+            LockID= lockID;
         }
 
         //The actual running function. The large pile of switch cases waiting for better soulution.
@@ -37,6 +40,13 @@ namespace AutoManSys.Modules
         //So please don't hate me....
         public void Run()
         {
+            //Check if LegoLock is locked.
+            if (LegoLock.getLockStatus() == true)
+            {
+                throw new SystemException("Lego is locked while trying to access Legos");
+            }
+            //Lock the LegoLock
+            LegoLock.tryLock(LockID);
             Console.WriteLine("[Debug] TaskRuner started");
             foreach (var Inst in InstructionSet)
             {
@@ -140,6 +150,7 @@ namespace AutoManSys.Modules
                         ));
                         Task.WaitAll(comm.SendAsync("Communication", "ResultReport", $"?Success=False&Contiune=False"));
                         Console.WriteLine($"[Error]Failed while running {Inst.Action} with {Inst.Component},{e.Message}");
+                        LegoLock.unLock(LockID);
                         throw e;
                     }
                     ErrorCount++;
@@ -151,6 +162,9 @@ namespace AutoManSys.Modules
                 }
                 // Console.WriteLine($"[Debug]Action successfully carried out for:{Inst.Component},{Inst.Action}");
             }
+
+            //Unlock
+            LegoLock.unLock(LockID);
 
             //Write Log to OrderManSys, wait for the request to complete
             var ReportLogTask = comm.PostAsync("Communication", "LogReport",

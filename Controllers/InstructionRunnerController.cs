@@ -33,11 +33,35 @@ namespace AutoManSys.Controllers
         [HttpPost]
         public IActionResult Execute([FromBody]IEnumerable<Instruction> Insts,[FromQuery(Name = "Contiune")]bool Contiune = false)
         {
-            InstructionRunner Irunner = new InstructionRunner(Insts.ToList(),_connectionstrings,Contiune);
+            if (LegoLock.getLockStatus() == true)
+            {
+                return StatusCode(503,"Lego is running");
+            }
+            InstructionRunner Irunner = new InstructionRunner(Insts.ToList(),_connectionstrings,Contiune,Guid.NewGuid().ToString());
             // Thread RunnerThread = new Thread(TrunnerEngine.Run);
             // RunnerThread.Start();
             Task.Factory.StartNew(Irunner.Run).ConfigureAwait(false);
             return StatusCode(202);
+        }
+
+        [HttpGet("/Lock")]
+        public IActionResult Lock()
+        {
+          return Ok($"Lego Lock: {LegoLock.getLockStatus()}");
+        }
+
+        [HttpGet("/FlipLock")]
+        public IActionResult FlipLock()
+        {
+          if (LegoLock.getLockStatus() == true)
+          {
+              LegoLock.unLock("Controller");
+          }
+          else
+          {
+            LegoLock.tryLock("Controller");   
+          }
+          return Ok();
         }
     }
 }

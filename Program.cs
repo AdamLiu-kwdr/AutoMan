@@ -20,6 +20,7 @@ namespace AutoManSys
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .UseUrls("http://*:5000;") //Listen to all incoming traffic through port 5000
                 .Build();
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.IO;
 using AutoManSys.LEGOInterface;
 
+
 namespace AutoManSys.Controllers
 {
     //This controller is for Diagnosting Motors/Sensors and the service its self.

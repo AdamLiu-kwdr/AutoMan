@@ -12,6 +12,8 @@ namespace AutoManSys.LEGOInterface
     BallLoaderControl.py => Control Ball Loader
     (PS means Python Scripts)
     */
+
+    //Remember to call LegoLock before using any lego stuff.
     public class LegoRobotPY : ILEGORobot
     {
 
