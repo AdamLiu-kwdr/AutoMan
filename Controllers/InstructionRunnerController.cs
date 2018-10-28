@@ -35,7 +35,7 @@ namespace AutoManSys.Controllers
         {
             if (LegoLock.getLockStatus() == true)
             {
-                return StatusCode(503,"Lego is running");
+                return StatusCode(503,"Lego lock is locked(Another job is already running.)");
             }
             InstructionRunner Irunner = new InstructionRunner(Insts.ToList(),_connectionstrings,Contiune,Guid.NewGuid().ToString());
             // Thread RunnerThread = new Thread(TrunnerEngine.Run);
